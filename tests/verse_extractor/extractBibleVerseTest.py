@@ -88,7 +88,6 @@ class ExtractBibleVerseTest(unittest.TestCase):
 
 #input Porque yo soy elSeñortu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
 #output Porque yo soy el Señor tu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
-#remove double spaces
 # Mark 8:22-25 contains the heading & first verse number
 if __name__ == "__main__":
     unittest.main()
