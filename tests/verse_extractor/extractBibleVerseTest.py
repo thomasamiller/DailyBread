@@ -1,18 +1,19 @@
 import unittest
 import src.verse_extractor.extractBibleVersesRef
-from src.verse_extractor.extractBibleVersesRef import format_reference_for_field, get_book_short_name, reference_url
-
+from src.verse_extractor.extractBibleVersesRef import format_reference_for_field, get_book_short_name, reference_url, get_verse_content
+from bs4 import BeautifulSoup
 
 def get_url(reference):
     return reference_url(reference)
 
 
 class ExtractBibleVerseTest(unittest.TestCase):
-    #https://www.geeksforgeeks.org/how-to-compare-two-text-files-in-python/
     #tests to add
     #header not removed & spaces not added: 2 Korinther 2:14 expected: Gott aber sei Dank! Weil wir mit Christus verbunden sind, lässt er uns immer in seinem Triumphzug mitziehen und macht durch uns an jedem Ort bekannt, wer er ist, sodass sich diese Erkenntnis wie ein wohlriechender Duft überallhin ausbreitet.
     #if Ps or Eccl, add in the verse afterwards in French and German
-    #Isaiah 42:8 - German & English have theLord - missing space
+    #Isaiah 42:8 - German & English have theLord
+    #Psalmen 119:71-72 missing space in German - missing space michals, no Japanese text Ps-119-71-Ps-119-72
+    # Deuteronomy 2:7 missing space in English, German, & Spanish: TheLordyour denn derHerr elSeñorsu
     def test_format_reference(self):
         self.assertEqual(format_reference_for_field("2 Corinthians 12:9"), ["2Cor-12-9"])
         self.assertEqual(format_reference_for_field("Exodus 28:2-3"), ['Exod-28-2', "Exod-28-3"])
@@ -64,6 +65,25 @@ class ExtractBibleVerseTest(unittest.TestCase):
             #print("testing input=" + test_input + " expected=" + test_expected)
             self.assertEqual(format_reference_for_field(test_input), test_expected)
         bible_books.close()
+
+    def test_strip_extra_content(self):
+        #if parent is a heading, ignore the line <h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>
+        markup = '<h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>'
+        self.assert_soup(markup, "")
+
+        markup += '<span class="text Rev-11-15"><sup class="versenum">15 </sup>The seventh angel sounded his trumpet,<sup class="crossreference" ...ference B"&gt;B&lt;/a&gt;)\'>(<a href="#cen-NIV-30889B" title="See cross-reference B">B</a>)</sup> in heaven, which said:</span>'
+        markup += '<span class="text Rev-11-15">“The kingdom of the world has become</span>'
+        markup += '<span class="text Rev-11-15">the kingdom of our Lord and of his Messiah,<sup class="crossreference" data-cr="#cen-NIV-30889C" ...9C" title="See cross-reference C"&gt;C&lt;/a&gt;)\'>(<a href="#cen-NIV-30889C" title="See cross-reference C">C</a>)</sup></span>'
+        markup += '<span class="text Rev-11-15">and he will reign for ever and ever.”<sup class="crossreference" data-cr="#cen-NIV-30889D" data-l...9D" title="See cross-reference D"&gt;D&lt;/a&gt;)\'>(<a href="#cen-NIV-30889D" title="See cross-reference D">D</a>)</sup></span>'
+
+        expected = 'The seventh angel sounded his trumpet, in heaven, which said: “The kingdom of the world has become the kingdom of our Lord and of his Messiah, and he will reign for ever and ever.” '
+
+        self.assert_soup(markup, expected)
+
+    def assert_soup(self, markup, expected):
+        soup = BeautifulSoup(markup, 'html.parser')
+        actual = get_verse_content("Rev-11-15", soup)
+        self.assertEqual(actual, expected)
 
 
 #input Porque yo soy elSeñortu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
