@@ -9,14 +9,15 @@ base_url = "https://www.biblegateway.com/passage/?search="
 def format_reference_for_field(reference):
     #if reference is a range of verses with -, take the last verse number, e.g. Exodus 28:2-3
     #process verse by verse in a loop
-    isMultiple = reference.find("-") >= 0
-    if isMultiple:
+    is_multiple = reference.find("-") >= 0
+    verses = []
+
+    if is_multiple:
         # convention Exodus 28:2-3: start verse between : and -
         colon_location = reference.find(":")
         hyphen_location = reference.find("-")
         start_verse = int(reference[colon_location+1:hyphen_location])
         end_verse = int(reference.split("-")[1])
-        verses = []
         counter = start_verse
         while counter in range(end_verse):
             verses.append(counter)
@@ -35,7 +36,7 @@ def format_reference_for_field(reference):
 
     #get book short name for field
     short_name = get_book_short_name(book)
-    if isMultiple:
+    if is_multiple:
         base_reference = short_name + "-" + chapter_verse.split(":")[0]
         field_reference = []
         for ref in verses:
@@ -47,14 +48,13 @@ def format_reference_for_field(reference):
 
 
     #return search_reference
-    #return "Ps-23-2-Ps-23-3"
-    #arr.append(8) arr.insert(6, 7) length = len(arr)
+
     return field_reference
 
 def get_reference():
     #return input("Enter a Bible reference (e.g., John 3:16): ").strip()
     print("testament and reference hard coded at the moment")
-    return "Revelation 11:15"
+    return "1 Peter 3:15"
 
 def reference_url(reference):
     return reference.replace(" ", "+")
@@ -113,20 +113,20 @@ def get_verse_content(search_reference, soup):
     # in Japanese we might have multiple verses together: text Matt-16-2-Matt-16-3
     verse = ""
     for verseContent in soup.find_all("span", class_="text " + str(search_reference)):
-        if verseContent:
+        if not verseContent:
+            print("Verse not found.")
+        else:
             parent_name = verseContent.parent.name
             # remove title from the text e.g. Revelation 11:15 <h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>
             if not parent_name == "h3" :
                 #handle the Lord in the text <span style="font-variant: small-caps" class="small-caps">Herr</span> GErman, English, SPanish
                 verse = verse + str(verseContent.get_text(strip=True))
                 # remove square brackets and contents (link to cross reference)
-                verse = re.sub('[\[].*?[\]]', "", verse)
+                verse = re.sub('\[.*?[]]', "", verse)
                 # remove brackets and contents (cross reference)
                 verse = re.sub("[(\[].*?[)\]]", " ", verse)
                 # remove leading digits
                 verse = verse.lstrip(digits) + " "
-        else:
-            print("Verse not found.")
     verse = verse.lstrip(digits)
     # remove double spaces
     verse = verse.replace("  ", " ")

@@ -1,7 +1,10 @@
 import unittest
-import src.verse_extractor.extractBibleVersesRef
-from src.verse_extractor.extractBibleVersesRef import format_reference_for_field, get_book_short_name, reference_url, get_verse_content
+
 from bs4 import BeautifulSoup
+
+from src.verse_extractor.extractBibleVersesRef import format_reference_for_field, get_book_short_name, reference_url, \
+    get_verse_content
+
 
 def get_url(reference):
     return reference_url(reference)
@@ -89,5 +92,7 @@ class ExtractBibleVerseTest(unittest.TestCase):
 #input Porque yo soy elSeñortu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
 #output Porque yo soy el Señor tu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
 # Mark 8:22-25 contains the heading & first verse number
+#missing space between sentences 1 Petrus 3:15
+#Ehrt vielmehr Christus, den Herrn, indem ihr ihm von ganzem Herzen vertraut.Und seid jederzeit bereit, jedem Rede und Antwort zu stehen, der euch auffordert, Auskunft über die Hoffnung zu geben, die euch erfüllt.
 if __name__ == "__main__":
     unittest.main()
