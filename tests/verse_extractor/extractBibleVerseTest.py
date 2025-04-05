@@ -69,30 +69,54 @@ class ExtractBibleVerseTest(unittest.TestCase):
             self.assertEqual(format_reference_for_field(test_input), test_expected)
         bible_books.close()
 
-    def test_strip_extra_content(self):
+    def test_strip_the_lord(self):
+        markup = '<p class="verse"><span class="text Ps-27-1"><sup class="versenum">1&nbsp;</sup><i>Von David.</i></span></p>'
+        markup += '<p class="verse"><span class="text Ps-27-1">Der <span style="font-variant: small-caps" class="small-caps">Herr</span> ist mein Licht und mein Heil,<br>vor wem sollte ich mich fürchten?<br>Der <span style="font-variant: small-caps" class="small-caps">Herr</span> ist meines Lebens Kraft,<br>vor wem sollte mir grauen?</span></p>'
+        expected = "Von David. Der Herr ist mein Licht und mein Heil, vor wem sollte ich mich fürchten? Der Herr ist meines Lebens Kraft, vor wem sollte mir grauen?"
+
+        self.assert_soup(markup, expected, "Ps-27-1")
+
+    def test_strip_heading(self):
         #if parent is a heading, ignore the line <h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>
         markup = '<h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>'
-        self.assert_soup(markup, "")
+        self.assert_soup(markup, "", "Rev-11-15")
 
-        markup += '<span class="text Rev-11-15"><sup class="versenum">15 </sup>The seventh angel sounded his trumpet,<sup class="crossreference" ...ference B"&gt;B&lt;/a&gt;)\'>(<a href="#cen-NIV-30889B" title="See cross-reference B">B</a>)</sup> in heaven, which said:</span>'
+    def test_strip_cross_references(self):
+        markup = '<span class="text Rev-11-15"><sup class="versenum">15 </sup>The seventh angel sounded his trumpet,<sup class="crossreference" ...ference B"&gt;B&lt;/a&gt;)\'>(<a href="#cen-NIV-30889B" title="See cross-reference B">B</a>)</sup> in heaven, which said:</span>'
         markup += '<span class="text Rev-11-15">“The kingdom of the world has become</span>'
         markup += '<span class="text Rev-11-15">the kingdom of our Lord and of his Messiah,<sup class="crossreference" data-cr="#cen-NIV-30889C" ...9C" title="See cross-reference C"&gt;C&lt;/a&gt;)\'>(<a href="#cen-NIV-30889C" title="See cross-reference C">C</a>)</sup></span>'
         markup += '<span class="text Rev-11-15">and he will reign for ever and ever.”<sup class="crossreference" data-cr="#cen-NIV-30889D" data-l...9D" title="See cross-reference D"&gt;D&lt;/a&gt;)\'>(<a href="#cen-NIV-30889D" title="See cross-reference D">D</a>)</sup></span>'
 
-        expected = 'The seventh angel sounded his trumpet, in heaven, which said: “The kingdom of the world has become the kingdom of our Lord and of his Messiah, and he will reign for ever and ever.” '
+        expected = 'The seventh angel sounded his trumpet, in heaven, which said: “The kingdom of the world has become the kingdom of our Lord and of his Messiah, and he will reign for ever and ever. ”'
 
-        self.assert_soup(markup, expected)
+        self.assert_soup(markup, expected, "Rev-11-15")
 
-    def assert_soup(self, markup, expected):
+    def test_replace_br_with_space(self):
+        # missing space after Hilfe Psalmen 146:5 Wohl dem, dessen Hilfeder Gott Jakobs ist,dessen Hoffnung ruht auf dem Herrn, seinem Gott!
+
+        markup = '<span id="de-SCH2000-16416" class="text Ps-146-5"><sup class="versenum">5&nbsp;</sup>Wohl dem, dessen Hilfe<br>der Gott Jakobs ist,<br>dessen Hoffnung ruht auf dem <span style="font-variant: small-caps" class="small-caps">Herrn</span>, seinem Gott!</span>'
+        expected = 'Wohl dem, dessen Hilfe der Gott Jakobs ist, dessen Hoffnung ruht auf dem Herrn, seinem Gott!'
+        self.assert_soup(markup, expected, "Ps-146-5")
+
+    def test_delete_chapter(self):
+        # chapter not deleted: Salmos 46:1-2 Al director musical. De los hijos de Coré. Canción según alamot. 46 Dios es nuestro refugio y nuestra fortaleza, nuestra segura ayuda en momentos de angustia.Por eso, no temeremos aunque se desmorone la tierra y las montañas se hundan en el fondo del mar;
+
+        markup = '<p class="line"><span class="chapter-2"><span class="text Ps-46-1"><span class="chapternum">46&nbsp;</span>Dios es nuestro refugio y nuestra fortaleza,</span></span><br><span class="indent-1"><span class="indent-1-breaks">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text Ps-46-1">nuestra segura ayuda en momentos de angustia.</span></span><br><span id="es-NVI-14617" class="text Ps-46-2"><sup class="versenum">2&nbsp;</sup>Por eso, no temeremos</span><br><span class="indent-1"><span class="indent-1-breaks">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text Ps-46-2">aunque se desmorone la tierra</span></span><br><span class="indent-1"><span class="indent-1-breaks">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text Ps-46-2">y las montañas se hundan en el fondo del mar;</span></span></p>'
+        expected = 'Dios es nuestro refugio y nuestra fortaleza, nuestra segura ayuda en momentos de angustia.'
+        self.assert_soup(markup, expected, "Ps-46-1")
+
+    def test_delete_chapter_space_hyphens(self):
+        # Psalm 27:1 Of David. 1TheLordis my light and my salvation — whom shall I fear? TheLordis the stronghold of my life— of whom shall I be afraid?
+        markup = '<p class="line"><span class="text Ps-27-1"><sup class="versenum">1&nbsp;</sup>The <span style="font-variant: small-caps" class="small-caps">Lord</span> is my light<sup class="crossreference" data-cr="#cen-NIV-14287A" data-link="(<a href=&quot;#cen-NIV-14287A&quot; title=&quot;See cross-reference A&quot;>A</a>)">(<a href="#cen-NIV-14287A" title="See cross-reference A">A</a>)</sup> and my salvation<sup class="crossreference" data-cr="#cen-NIV-14287B" data-link="(<a href=&quot;#cen-NIV-14287B&quot; title=&quot;See cross-reference B&quot;>B</a>)">(<a href="#cen-NIV-14287B" title="See cross-reference B">B</a>)</sup>—</span><br><span class="indent-1"><span class="indent-1-breaks">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text Ps-27-1">whom shall I fear?</span></span><br><span class="text Ps-27-1">The <span style="font-variant: small-caps" class="small-caps">Lord</span> is the stronghold<sup class="crossreference" data-cr="#cen-NIV-14287C" data-link="(<a href=&quot;#cen-NIV-14287C&quot; title=&quot;See cross-reference C&quot;>C</a>)">(<a href="#cen-NIV-14287C" title="See cross-reference C">C</a>)</sup> of my life—</span><br><span class="indent-1"><span class="indent-1-breaks">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text Ps-27-1">of whom shall I be afraid?<sup class="crossreference" data-cr="#cen-NIV-14287D" data-link="(<a href=&quot;#cen-NIV-14287D&quot; title=&quot;See cross-reference D&quot;>D</a>)">(<a href="#cen-NIV-14287D" title="See cross-reference D">D</a>)</sup></span></span></p>'
+
+        expected = "The Lord is my light and my salvation — whom shall I fear? The Lord is the stronghold of my life — of whom shall I be afraid?"
+        self.assert_soup(markup, expected, "Ps-27-1")
+
+    def assert_soup(self, markup, expected, verse):
         soup = BeautifulSoup(markup, 'html.parser')
-        actual = get_verse_content("Rev-11-15", soup)
-        self.assertEqual(actual, expected)
+        actual = get_verse_content(verse, soup)
+        actual = actual.strip()
+        self.assertEqual(expected, actual)
 
-
-#input Porque yo soy elSeñortu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
-#output Porque yo soy el Señor tu Dios, que sostiene tu mano derecha; yo soy quien te dice: “No temas, yo te ayudaré”.
-# Mark 8:22-25 contains the heading & first verse number
-#missing space between sentences 1 Petrus 3:15
-#Ehrt vielmehr Christus, den Herrn, indem ihr ihm von ganzem Herzen vertraut.Und seid jederzeit bereit, jedem Rede und Antwort zu stehen, der euch auffordert, Auskunft über die Hoffnung zu geben, die euch erfüllt.
 if __name__ == "__main__":
     unittest.main()

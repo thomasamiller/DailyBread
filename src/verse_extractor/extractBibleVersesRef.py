@@ -5,6 +5,10 @@ from string import digits
 
 # Define the Bible Gateway base URL
 base_url = "https://www.biblegateway.com/passage/?search="
+has_display_url = True
+is_hard_code_verse = True
+selected_reference = "Psalm 27:1"
+testament = "old"
 
 def format_reference_for_field(reference):
     #if reference is a range of verses with -, take the last verse number, e.g. Exodus 28:2-3
@@ -46,34 +50,31 @@ def format_reference_for_field(reference):
         chapter_verse = chapter_verse.replace(":", "-")
         field_reference = [short_name + "-" + chapter_verse]
 
-
-    #return search_reference
-
     return field_reference
 
 def get_reference():
-    #return input("Enter a Bible reference (e.g., John 3:16): ").strip()
-    print("testament and reference hard coded at the moment")
-    return "1 Peter 3:15"
+    return input("Enter a Bible reference (e.g., John 3:16): ").strip()
 
 def reference_url(reference):
     return reference.replace(" ", "+")
 
 def get_testament():
     # Prompt the user for the Testament
-    #return input("Is the reference from the Old Testament or New Testament? ").strip().lower()
-    return "new"
+    return input("Is the reference from the Old Testament or New Testament? ").strip().lower()
 
-def validate_testament(testament):
+def validate_testament():
     if testament not in ["old", "new", "nt", "ot", "old testament", "new testament"]:
         print("Invalid input. Please specify 'old / Old Testament / ot' or 'new / New Testament / nt'.")
         exit()
 
 def extract_reference():
-    testament = get_testament()
+    if is_hard_code_verse:
+        print("testament and reference hard coded at the moment")
 
     # Prompt the user for the Bible reference
-    reference = get_reference()
+    #if not is_hard_code_verse:
+        #testament = get_testament()
+        #reference = get_reference()
 
     # Define the versions for each Testament or CUVMPT
     new_testament_versions = ["NIV", "NGU-DE", "NEG1979", "NVI", "JLB", "KLB", "CUVMPS "]
@@ -84,9 +85,11 @@ def extract_reference():
 
     # Open a page for each version
     for version in versions:
-        search_reference = reference_url(reference)
+        search_reference = reference_url(selected_reference)
+
         url = f"{base_url}{search_reference}&version={version}"
-        #print("url=" + url)
+        if has_display_url:
+            print("url=" + url)
         # Make an HTTP GET request to fetch the page content
         response = requests.get(url)
         
@@ -94,14 +97,17 @@ def extract_reference():
             # Parse the HTML content
             soup = BeautifulSoup(response.text, 'html.parser')
 
-            get_reference_text(soup)
+            print_reference = get_reference_text(soup)
+            #print_reference = "<b><a href='" + url + "'>" +  print_reference + "</a></b>"
+            print(print_reference)
 
-            field_reference = format_reference_for_field(reference)
+            field_reference = format_reference_for_field(selected_reference)
 
             verse = ""
             for ref in field_reference:
                 verse = verse + get_verse_content(ref, soup)
 
+            verse = verse.strip()
             print(verse + "\n")
         else:
             print(f"Failed to fetch the page. Status code: {response.status_code}")
@@ -118,20 +124,31 @@ def get_verse_content(search_reference, soup):
         else:
             parent_name = verseContent.parent.name
             # remove title from the text e.g. Revelation 11:15 <h3><span class="text Rev-11-15" id="en-NIV-30889">The Seventh Trumpet</span></h3>
-            if not parent_name == "h3" :
+            if not parent_name == "h3" and not parent_name == "h4" :
+                # replace <br> with space
+
+                new_lines = verseContent.findAll("br")
+                for lines in new_lines:
+                    lines.replaceWith(" ")
+                verse_numbers = verseContent.findAll("sup")
+                for numbers in verse_numbers:
+                    numbers.replaceWith("")
                 #handle the Lord in the text <span style="font-variant: small-caps" class="small-caps">Herr</span> GErman, English, SPanish
-                verse = verse + str(verseContent.get_text(strip=True))
+                verse = verse + str(verseContent.get_text(strip=False))
                 # remove square brackets and contents (link to cross reference)
-                verse = re.sub('\[.*?[]]', "", verse)
+                verse = re.sub('\[.*?]', " ", verse)
                 # remove brackets and contents (cross reference)
                 verse = re.sub("[(\[].*?[)\]]", " ", verse)
                 # remove leading digits
                 verse = verse.lstrip(digits) + " "
     verse = verse.lstrip(digits)
+
+    verse = verse.replace("—", " —")
+    verse = re.sub('([.,!?()])', r'\1 ', verse)
+    verse = re.sub('([.,!?()] ["\'])', '', verse)
     # remove double spaces
-    verse = verse.replace("  ", " ")
-    #insert spaces around this text <span style="font-variant: small-caps" class="small-caps">Gott</span>
-    #insert spaces around this text <span class="text Isa-30-15">«C'est dans le retour à moi<sup data-fn="#ffr-SG21-18301a" class="footnote" data-link="[<a href=&quot;#ffr-SG21-18301a&quot; title=&quot;See footnote a&quot;>a</a>]">[<a href="#ffr-SG21-18301a" title="See footnote a">a</a>]</sup> et le repos que sera votre salut,</span>
+    verse = re.sub('\s{2,}', ' ', verse)
+
 
     return verse
 
@@ -140,7 +157,11 @@ def get_reference_text(soup):
     # Find the element containing the passage reference
     dropdown_text = soup.find("div", class_="dropdown-display-text")
     if dropdown_text:
-        print(dropdown_text.get_text(strip=True))
+        dropdown_text = dropdown_text.get_text(strip=True)
+        #uncomment to print the reference without hyperlink
+        #print(dropdown_text)
+
+        return dropdown_text
     else:
         print("Reference not found.")
 
@@ -148,19 +169,14 @@ def get_book_short_name(book_name):
     bible_books = open("C:\\Users\\thoma\PycharmProjects\extract_bible\src\\verse_extractor\\bibleBooksMatch.txt", "r")
     short_name = ""
 
-    for reference in bible_books:
+    for references in bible_books:
         if bool(short_name):
             break
-        #print("reference=" + reference)
-        book = reference.split("=", 1)[0]
+        #print("references=" + references)
+        book = references.split("=", 1)[0]
         if book_name == book:
-            short_name = reference.split("=", 1)[1]
-        #print("book=" + book + " short_name=" +short_name)
-        #search_reference = get_url(reference)
-        #url = f"{"https://www.biblegateway.com/passage/?search="}{search_reference}"
-        #print("url=" + url)
-        #ref = reference.split("=", 1)[0]
-        #output = reference.split("=", 1)[1]
+            short_name = references.split("=", 1)[1]
+
     bible_books.close()
     # remove the new line character from the reference
     short_name = short_name[:-1]
