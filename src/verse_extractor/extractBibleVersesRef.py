@@ -5,10 +5,10 @@ from string import digits
 
 # Define the Bible Gateway base URL
 base_url = "https://www.biblegateway.com/passage/?search="
-has_display_url = True
+has_display_url = False
 is_hard_code_verse = True
-selected_reference = "Psalm 27:1"
-testament = "old"
+selected_reference = "John 3:16"
+testament = "new"
 
 def format_reference_for_field(reference):
     #if reference is a range of verses with -, take the last verse number, e.g. Exodus 28:2-3
