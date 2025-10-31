@@ -117,6 +117,8 @@ class ExtractBibleVerseTest(unittest.TestCase):
         actual = get_verse_content(verse, soup)
         actual = actual.strip()
         self.assertEqual(expected, actual)
-
+#Genesis 23:2 - Japanese not found: <span class="text Gen-23-1-Gen-23-2"><span class="chapternum">23&nbsp;</span><sup class="versenum">1-2&nbsp;</sup>さて、サラはカナンの地ヘブロンにいた時、百二十七歳で死にました。アブラハムが嘆き悲しんだことは言うまでもありません。 </span>
+#Genesis 7:7,23 handle an extra verse
+#Mark 12:44 - Japanese not found: <span id="ja-JLB-21925" class="text Mark-12-43-Mark-12-44"><sup class="versenum">43-44&nbsp;</sup>それをごらんになったイエスは、弟子たちを呼び寄せて、こう言われました。「あの貧しい未亡人は、どの金持ちよりも、はるかに多く投げ入れたのです。金持ちはあり余る中からほんの少しばかりささげたのに、この女は、乏しい中から持っている全部をささげたのですから。」</span>
 if __name__ == "__main__":
     unittest.main()

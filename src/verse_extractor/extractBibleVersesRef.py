@@ -7,7 +7,7 @@ from string import digits
 base_url = "https://www.biblegateway.com/passage/?search="
 has_display_url = False
 is_hard_code_verse = True
-selected_reference = "John 3:16"
+selected_reference = "Romans 15:13"
 testament = "new"
 
 def format_reference_for_field(reference):
@@ -77,8 +77,8 @@ def extract_reference():
         #reference = get_reference()
 
     # Define the versions for each Testament or CUVMPT
-    new_testament_versions = ["NIV", "NGU-DE", "NEG1979", "NVI", "JLB", "KLB", "CUVMPS "]
-    old_testament_versions = ["NIV", "SCH2000", "SG21", "NVI", "JLB", "KLB", "CUVMPS "]
+    new_testament_versions = ["NIV", "NGU-DE", "NEG1979", "NVI", "UBG", "JLB", "KLB", "CUVMPS "]
+    old_testament_versions = ["NIV", "SCH2000", "SG21", "NVI", "UBG", "JLB", "KLB", "CUVMPS "]
 
     # Determine which versions to use
     versions = new_testament_versions if testament in ["new", "new testament", "nt"] else old_testament_versions
@@ -97,7 +97,7 @@ def extract_reference():
             # Parse the HTML content
             soup = BeautifulSoup(response.text, 'html.parser')
 
-            print_reference = get_reference_text(soup)
+            print_reference = get_reference_text(soup, url)
             #print_reference = "<b><a href='" + url + "'>" +  print_reference + "</a></b>"
             print(print_reference)
 
@@ -153,7 +153,7 @@ def get_verse_content(search_reference, soup):
     return verse
 
 
-def get_reference_text(soup):
+def get_reference_text(soup, url):
     # Find the element containing the passage reference
     dropdown_text = soup.find("div", class_="dropdown-display-text")
     if dropdown_text:
@@ -163,7 +163,8 @@ def get_reference_text(soup):
 
         return dropdown_text
     else:
-        print("Reference not found.")
+        print("Reference not found: " + url)
+        #https://www.bible.com/bible/132/MAT.1.PBG or https://www.bible.com/bible/137/MAT.1.PLNT
 
 def get_book_short_name(book_name):
     bible_books = open("C:\\Users\\thoma\PycharmProjects\extract_bible\src\\verse_extractor\\bibleBooksMatch.txt", "r")
