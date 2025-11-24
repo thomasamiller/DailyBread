@@ -7,8 +7,8 @@ from string import digits
 base_url = "https://www.biblegateway.com/passage/?search="
 has_display_url = False
 is_hard_code_verse = True
-selected_reference = "Romans 15:13"
-testament = "new"
+selected_reference = "Psalm 119:105"
+testament = "old"
 
 def format_reference_for_field(reference):
     #if reference is a range of verses with -, take the last verse number, e.g. Exodus 28:2-3
