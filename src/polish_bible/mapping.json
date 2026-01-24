@@ -1,0 +1,398 @@
+[
+    {
+        "english_name": "Genesis",
+        "english_abbr": "Gen",
+        "polish_name": "Księga Rodzaju",
+        "polish_abbr": "rdz"
+    },
+    {
+        "english_name": "Exodus",
+        "english_abbr": "Exod",
+        "polish_name": "Księga Wyjścia",
+        "polish_abbr": "wj"
+    },
+    {
+        "english_name": "Leviticus",
+        "english_abbr": "Lev",
+        "polish_name": "Księga Kapłańska",
+        "polish_abbr": "kpl"
+    },
+    {
+        "english_name": "Numbers",
+        "english_abbr": "Num",
+        "polish_name": "Księga Liczb",
+        "polish_abbr": "lb"
+    },
+    {
+        "english_name": "Deuteronomy",
+        "english_abbr": "Deut",
+        "polish_name": "Księga Powtórzonego Prawa",
+        "polish_abbr": "pwt"
+    },
+    {
+        "english_name": "Joshua",
+        "english_abbr": "Josh",
+        "polish_name": "Księga Jozuego",
+        "polish_abbr": "joz"
+    },
+    {
+        "english_name": "Judges",
+        "english_abbr": "Judg",
+        "polish_name": "Księga Sędziów",
+        "polish_abbr": "sdz"
+    },
+    {
+        "english_name": "Ruth",
+        "english_abbr": "Ruth",
+        "polish_name": "Księga Rut",
+        "polish_abbr": "rt"
+    },
+    {
+        "english_name": "1 Samuel",
+        "english_abbr": "1Sam",
+        "polish_name": "1 Księga Samuela",
+        "polish_abbr": "1sm"
+    },
+    {
+        "english_name": "2 Samuel",
+        "english_abbr": "2Sam",
+        "polish_name": "2 Księga Samuela",
+        "polish_abbr": "2sm"
+    },
+    {
+        "english_name": "1 Kings",
+        "english_abbr": "1Kgs",
+        "polish_name": "1 Księga Królewska",
+        "polish_abbr": "1krl"
+    },
+    {
+        "english_name": "2 Kings",
+        "english_abbr": "2Kgs",
+        "polish_name": "2 Księga Królewska",
+        "polish_abbr": "2krl"
+    },
+    {
+        "english_name": "1 Chronicles",
+        "english_abbr": "1Chr",
+        "polish_name": "1 Księga Kronik",
+        "polish_abbr": "1krn"
+    },
+    {
+        "english_name": "2 Chronicles",
+        "english_abbr": "2Chr",
+        "polish_name": "2 Księga Kronik",
+        "polish_abbr": "2krn"
+    },
+    {
+        "english_name": "Ezra",
+        "english_abbr": "Ezra",
+        "polish_name": "Księga Ezdrasza",
+        "polish_abbr": "ezd"
+    },
+    {
+        "english_name": "Nehemiah",
+        "english_abbr": "Neh",
+        "polish_name": "Księga Nehemiasza",
+        "polish_abbr": "ne"
+    },
+    {
+        "english_name": "Esther",
+        "english_abbr": "Esth",
+        "polish_name": "Księga Estery",
+        "polish_abbr": "est"
+    },
+    {
+        "english_name": "Job",
+        "english_abbr": "Job",
+        "polish_name": "Księga Hioba",
+        "polish_abbr": "hi"
+    },
+    {
+        "english_name": "Psalm",
+        "english_abbr": "Ps",
+        "polish_name": "Księga Psalmów",
+        "polish_abbr": "ps"
+    },
+    {
+        "english_name": "Proverbs",
+        "english_abbr": "Prov",
+        "polish_name": "Księga Przysłów",
+        "polish_abbr": "prz"
+    },
+    {
+        "english_name": "Ecclesiastes",
+        "english_abbr": "Eccl",
+        "polish_name": "Księga Koheleta",
+        "polish_abbr": "koh"
+    },
+    {
+        "english_name": "Song of Solomon",
+        "english_abbr": "Song",
+        "polish_name": "Pieśń nad pieśniami",
+        "polish_abbr": "pnp"
+    },
+    {
+        "english_name": "Isaiah",
+        "english_abbr": "Isa",
+        "polish_name": "Księga Izajasza",
+        "polish_abbr": "iz"
+    },
+    {
+        "english_name": "Jeremiah",
+        "english_abbr": "Jer",
+        "polish_name": "Księga Jeremiasza",
+        "polish_abbr": "jr"
+    },
+    {
+        "english_name": "Lamentations",
+        "english_abbr": "Lam",
+        "polish_name": "Lamentacje Jeremiasza",
+        "polish_abbr": "lm"
+    },
+    {
+        "english_name": "Ezekiel",
+        "english_abbr": "Ezek",
+        "polish_name": "Księga Ezechiela",
+        "polish_abbr": "ez"
+    },
+    {
+        "english_name": "Daniel",
+        "english_abbr": "Dan",
+        "polish_name": "Księga Daniela",
+        "polish_abbr": "dn"
+    },
+    {
+        "english_name": "Hosea",
+        "english_abbr": "Hos",
+        "polish_name": "Księga Ozeasza",
+        "polish_abbr": "oz"
+    },
+    {
+        "english_name": "Joel",
+        "english_abbr": "Joel",
+        "polish_name": "Księga Joela",
+        "polish_abbr": "jl"
+    },
+    {
+        "english_name": "Amos",
+        "english_abbr": "Amos",
+        "polish_name": "Księga Amosa",
+        "polish_abbr": "am"
+    },
+    {
+        "english_name": "Obadiah",
+        "english_abbr": "Obad",
+        "polish_name": "Księga Abdiasza",
+        "polish_abbr": "ab"
+    },
+    {
+        "english_name": "Jonah",
+        "english_abbr": "Jonah",
+        "polish_name": "Księga Jonasza",
+        "polish_abbr": "jon"
+    },
+    {
+        "english_name": "Micah",
+        "english_abbr": "Mic",
+        "polish_name": "Księga Micheasza",
+        "polish_abbr": "mi"
+    },
+    {
+        "english_name": "Nahum",
+        "english_abbr": "Nah",
+        "polish_name": "Księga Nahuma",
+        "polish_abbr": "na"
+    },
+    {
+        "english_name": "Habakkuk",
+        "english_abbr": "Hab",
+        "polish_name": "Księga Habakuka",
+        "polish_abbr": "ha"
+    },
+    {
+        "english_name": "Zephaniah",
+        "english_abbr": "Zeph",
+        "polish_name": "Księga Sofoniasza",
+        "polish_abbr": "so"
+    },
+    {
+        "english_name": "Haggai",
+        "english_abbr": "Hag",
+        "polish_name": "Księga Aggeusza",
+        "polish_abbr": "ag"
+    },
+    {
+        "english_name": "Zechariah",
+        "english_abbr": "Zech",
+        "polish_name": "Księga Zachariasza",
+        "polish_abbr": "za"
+    },
+    {
+        "english_name": "Malachi",
+        "english_abbr": "Mal",
+        "polish_name": "Księga Malachiasza",
+        "polish_abbr": "ml"
+    },
+    {
+        "english_name": "Matthew",
+        "english_abbr": "Matt",
+        "polish_name": "Ewangelia Mateusza",
+        "polish_abbr": "mat"
+    },
+    {
+        "english_name": "Mark",
+        "english_abbr": "Mark",
+        "polish_name": "Ewangelia Marka",
+        "polish_abbr": "mar"
+    },
+    {
+        "english_name": "Luke",
+        "english_abbr": "Luke",
+        "polish_name": "Ewangelia Łukasza",
+        "polish_abbr": "luk"
+    },
+    {
+        "english_name": "John",
+        "english_abbr": "John",
+        "polish_name": "Ewangelia Jana",
+        "polish_abbr": "jan"
+    },
+    {
+        "english_name": "Acts",
+        "english_abbr": "Acts",
+        "polish_name": "Dzieje Apostolskie",
+        "polish_abbr": "dz"
+    },
+    {
+        "english_name": "Romans",
+        "english_abbr": "Rom",
+        "polish_name": "List do Rzymian",
+        "polish_abbr": "rz"
+    },
+    {
+        "english_name": "1 Corinthians",
+        "english_abbr": "1Cor",
+        "polish_name": "1 List do Koryntian",
+        "polish_abbr": "1kor"
+    },
+    {
+        "english_name": "2 Corinthians",
+        "english_abbr": "2Cor",
+        "polish_name": "2 List do Koryntian",
+        "polish_abbr": "2kor"
+    },
+    {
+        "english_name": "Galatians",
+        "english_abbr": "Gal",
+        "polish_name": "List do Galatów",
+        "polish_abbr": "gal"
+    },
+    {
+        "english_name": "Ephesians",
+        "english_abbr": "Eph",
+        "polish_name": "List do Efezjan",
+        "polish_abbr": "ef"
+    },
+    {
+        "english_name": "Philippians",
+        "english_abbr": "Phil",
+        "polish_name": "List do Filipian",
+        "polish_abbr": "fil"
+    },
+    {
+        "english_name": "Colossians",
+        "english_abbr": "Col",
+        "polish_name": "List do Kolosan",
+        "polish_abbr": "kol"
+    },
+    {
+        "english_name": "1 Thessalonians",
+        "english_abbr": "1Thess",
+        "polish_name": "1 List do Tesaloniczan",
+        "polish_abbr": "1tes"
+    },
+    {
+        "english_name": "2 Thessalonians",
+        "english_abbr": "2Thess",
+        "polish_name": "2 List do Tesaloniczan",
+        "polish_abbr": "2tes"
+    },
+    {
+        "english_name": "1 Timothy",
+        "english_abbr": "1Tim",
+        "polish_name": "1 List do Tymoteusza",
+        "polish_abbr": "1tym"
+    },
+    {
+        "english_name": "2 Timothy",
+        "english_abbr": "2Tim",
+        "polish_name": "2 List do Tymoteusza",
+        "polish_abbr": "2tym"
+    },
+    {
+        "english_name": "Titus",
+        "english_abbr": "Titus",
+        "polish_name": "List do Tytusa",
+        "polish_abbr": "tyt"
+    },
+    {
+        "english_name": "Philemon",
+        "english_abbr": "Phlm",
+        "polish_name": "List do Filemona",
+        "polish_abbr": "flm"
+    },
+    {
+        "english_name": "Hebrews",
+        "english_abbr": "Heb",
+        "polish_name": "List do Hebrajczyków",
+        "polish_abbr": "hebr"
+    },
+    {
+        "english_name": "James",
+        "english_abbr": "Jas",
+        "polish_name": "List Jakuba",
+        "polish_abbr": "jak"
+    },
+    {
+        "english_name": "1 Peter",
+        "english_abbr": "1Pet",
+        "polish_name": "1 List Piotra",
+        "polish_abbr": "1p"
+    },
+    {
+        "english_name": "2 Peter",
+        "english_abbr": "2Pet",
+        "polish_name": "2 List Piotra",
+        "polish_abbr": "2p"
+    },
+    {
+        "english_name": "1 John",
+        "english_abbr": "1John",
+        "polish_name": "1 List Jana",
+        "polish_abbr": "1j"
+    },
+    {
+        "english_name": "2 John",
+        "english_abbr": "2John",
+        "polish_name": "2 List Jana",
+        "polish_abbr": "2j"
+    },
+    {
+        "english_name": "3 John",
+        "english_abbr": "3John",
+        "polish_name": "3 List Jana",
+        "polish_abbr": "3j"
+    },
+    {
+        "english_name": "Jude",
+        "english_abbr": "Jude",
+        "polish_name": "List Judy",
+        "polish_abbr": "jud"
+    },
+    {
+        "english_name": "Revelation",
+        "english_abbr": "Rev",
+        "polish_name": "Apokalipsa (Objawienie)",
+        "polish_abbr": "obj"
+    }
+]
