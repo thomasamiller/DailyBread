@@ -1,0 +1,538 @@
+{
+  "type": "Informacja o tłumaczeniu",
+  "name": "Biblia Tysiąclecia",
+  "abbreviation": "bt",
+  "language": "pl",
+  "description": "Biblia Tysiąclecia, wydanie IV Copyright (c) 1989 Wydawnictwo Pallottinum, Poznań. Wykorzystany w opracowaniu tekst IV wydania Biblii Tysiąclecia jest własnością Wydawnictwa Pallottinum w Poznaniu (ISBN 83-7014-218-4).",
+  "books_length": 73,
+  "books": [
+    {
+      "name": "Księga Rodzaju",
+      "abbreviation": "rdz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Wyjścia",
+      "abbreviation": "wj",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Kapłańska",
+      "abbreviation": "kpl",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Liczb",
+      "abbreviation": "lb",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Powtórzonego Prawa",
+      "abbreviation": "pwt",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Jozuego",
+      "abbreviation": "joz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Sędziów",
+      "abbreviation": "sdz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Rut",
+      "abbreviation": "rt",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "1 Księga Samuela",
+      "abbreviation": "1sm",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "2 Księga Samuela",
+      "abbreviation": "2sm",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "1 Księga Królewska",
+      "abbreviation": "1krl",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "2 Księga Królewska",
+      "abbreviation": "2krl",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "1 Księga Kronik",
+      "abbreviation": "1krn",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "2 Księga Kronik",
+      "abbreviation": "2krn",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Ezdrasza",
+      "abbreviation": "ezd",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Nehemiasza",
+      "abbreviation": "ne",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Estery",
+      "abbreviation": "est",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Hioba",
+      "abbreviation": "hi",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Psalmów",
+      "abbreviation": "ps",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Przysłów",
+      "abbreviation": "prz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Koheleta",
+      "abbreviation": "koh",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Pieśń nad pieśniami",
+      "abbreviation": "pnp",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Izajasza",
+      "abbreviation": "iz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Jeremiasza",
+      "abbreviation": "jr",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Lamentacje Jeremiasza",
+      "abbreviation": "lm",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Ezechiela",
+      "abbreviation": "ez",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Daniela",
+      "abbreviation": "dn",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Ozeasza",
+      "abbreviation": "oz",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Joela",
+      "abbreviation": "jl",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Amosa",
+      "abbreviation": "am",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Abdiasza",
+      "abbreviation": "ab",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Jonasza",
+      "abbreviation": "jon",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Micheasza",
+      "abbreviation": "mi",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Nahuma",
+      "abbreviation": "na",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Habakuka",
+      "abbreviation": "ha",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Sofoniasza",
+      "abbreviation": "so",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Aggeusza",
+      "abbreviation": "ag",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Zachariasza",
+      "abbreviation": "za",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Księga Malachiasza",
+      "abbreviation": "ml",
+      "part": {
+        "name": "Stary Testament",
+        "abbreviation": "st"
+      }
+    },
+    {
+      "name": "Ewangelia Mateusza",
+      "abbreviation": "mat",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "Ewangelia Marka",
+      "abbreviation": "mar",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "Ewangelia Łukasza",
+      "abbreviation": "luk",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "Ewangelia Jana",
+      "abbreviation": "jan",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "Dzieje Apostolskie",
+      "abbreviation": "dz",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Rzymian",
+      "abbreviation": "rz",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "1 List do Koryntian",
+      "abbreviation": "1kor",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "2 List do Koryntian",
+      "abbreviation": "2kor",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Galatów",
+      "abbreviation": "gal",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Efezjan",
+      "abbreviation": "ef",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Filipian",
+      "abbreviation": "fil",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Kolosan",
+      "abbreviation": "kol",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "1 List do Tesaloniczan",
+      "abbreviation": "1tes",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "2 List do Tesaloniczan",
+      "abbreviation": "2tes",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "1 List do Tymoteusza",
+      "abbreviation": "1tym",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "2 List do Tymoteusza",
+      "abbreviation": "2tym",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Tytusa",
+      "abbreviation": "tyt",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Filemona",
+      "abbreviation": "flm",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List do Hebrajczyków",
+      "abbreviation": "hebr",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List Jakuba",
+      "abbreviation": "jak",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "1 List Piotra",
+      "abbreviation": "1p",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "2 List Piotra",
+      "abbreviation": "2p",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "1 List Jana",
+      "abbreviation": "1j",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "2 List Jana",
+      "abbreviation": "2j",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "3 List Jana",
+      "abbreviation": "3j",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "List Judy",
+      "abbreviation": "jud",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    },
+    {
+      "name": "Apokalipsa (Objawienie)",
+      "abbreviation": "obj",
+      "part": {
+        "name": "Nowy Testament",
+        "abbreviation": "nt"
+      }
+    }
+  ]
+}

@@ -3,12 +3,16 @@ from bs4 import BeautifulSoup
 import re
 from string import digits
 
+from src.polish_bible.polish_bible import PolishBible
+
 # Define the Bible Gateway base URL
 base_url = "https://www.biblegateway.com/passage/?search="
 has_display_url = False
 is_hard_code_verse = True
 selected_reference = "Psalm 119:105"
 testament = "old"
+
+POLISH_BIBLE = "POL"
 
 def format_reference_for_field(reference):
     #if reference is a range of verses with -, take the last verse number, e.g. Exodus 28:2-3
@@ -77,40 +81,55 @@ def extract_reference():
         #reference = get_reference()
 
     # Define the versions for each Testament or CUVMPT
-    new_testament_versions = ["NIV", "NGU-DE", "NEG1979", "NVI", "UBG", "JLB", "KLB", "CUVMPS "]
-    old_testament_versions = ["NIV", "SCH2000", "SG21", "NVI", "UBG", "JLB", "KLB", "CUVMPS "]
+    new_testament_versions = ["NIV", "NGU-DE", "NEG1979", "NVI", POLISH_BIBLE, "JLB", "KLB", "CUVMPS "]
+    old_testament_versions = ["NIV", "SCH2000", "SG21", "NVI", POLISH_BIBLE, "JLB", "KLB", "CUVMPS "]
 
     # Determine which versions to use
     versions = new_testament_versions if testament in ["new", "new testament", "nt"] else old_testament_versions
 
     # Open a page for each version
     for version in versions:
-        search_reference = reference_url(selected_reference)
-
-        url = f"{base_url}{search_reference}&version={version}"
-        if has_display_url:
-            print("url=" + url)
-        # Make an HTTP GET request to fetch the page content
-        response = requests.get(url)
-        
-        if response.status_code == 200:
-            # Parse the HTML content
-            soup = BeautifulSoup(response.text, 'html.parser')
-
-            print_reference = get_reference_text(soup, url)
-            #print_reference = "<b><a href='" + url + "'>" +  print_reference + "</a></b>"
-            print(print_reference)
-
-            field_reference = format_reference_for_field(selected_reference)
-
-            verse = ""
-            for ref in field_reference:
-                verse = verse + get_verse_content(ref, soup)
-
-            verse = verse.strip()
-            print(verse + "\n")
+        if version == POLISH_BIBLE:
+            try:
+                get_from_polish_bible()
+            except Exception as e:
+                get_from_biblegateway("UBG")
         else:
-            print(f"Failed to fetch the page. Status code: {response.status_code}")
+            get_from_biblegateway(version)
+
+def get_from_polish_bible():
+    polish_bible = PolishBible()
+    parsed_reference = polish_bible.parse_reference(selected_reference)
+    polish_bible.print_verses(parsed_reference)
+    print("\n")
+
+def get_from_biblegateway(version: str):
+    search_reference = reference_url(selected_reference)
+
+    url = f"{base_url}{search_reference}&version={version}"
+    if has_display_url:
+        print("url=" + url)
+    # Make an HTTP GET request to fetch the page content
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        # Parse the HTML content
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        print_reference = get_reference_text(soup, url)
+        # print_reference = "<b><a href='" + url + "'>" +  print_reference + "</a></b>"
+        print(print_reference)
+
+        field_reference = format_reference_for_field(selected_reference)
+
+        verse = ""
+        for ref in field_reference:
+            verse = verse + get_verse_content(ref, soup)
+
+        verse = verse.strip()
+        print(verse + "\n")
+    else:
+        print(f"Failed to fetch the page. Status code: {response.status_code}")
 
 
 def get_verse_content(search_reference, soup):
@@ -167,7 +186,7 @@ def get_reference_text(soup, url):
         #https://www.bible.com/bible/132/MAT.1.PBG or https://www.bible.com/bible/137/MAT.1.PLNT
 
 def get_book_short_name(book_name):
-    bible_books = open("C:\\Users\\thoma\PycharmProjects\extract_bible\src\\verse_extractor\\bibleBooksMatch.txt", "r")
+    bible_books = open("bibleBooksMatch.txt", "r")
     short_name = ""
 
     for references in bible_books:
